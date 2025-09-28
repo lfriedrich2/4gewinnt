@@ -449,6 +449,61 @@ body {
   transform: scale(1);
 }
 
+/* Animation Controls - Disable animations when requested */
+.no-animations *,
+.no-animations *::before,
+.no-animations *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Specific overrides for game elements when animations are disabled */
+.no-animations .cell {
+  transition: none !important;
+  transform: none !important;
+}
+
+.no-animations .cell.drop-animation {
+  animation: none !important;
+}
+
+.no-animations .cell.winning {
+  animation: none !important;
+}
+
+.no-animations .btn {
+  transition: none !important;
+  transform: none !important;
+}
+
+.no-animations .btn:hover {
+  transform: none !important;
+}
+
+.no-animations .game-card {
+  transition: none !important;
+  transform: none !important;
+}
+
+.no-animations .game-card:hover {
+  transform: none !important;
+}
+
+.no-animations .player-score.active {
+  transform: none !important;
+}
+
+.no-animations .game-over-overlay {
+  transition: none !important;
+}
+
+.no-animations .game-over-content {
+  transition: none !important;
+  transform: none !important;
+}
+
 /* Responsive Design */
 @media (max-width: 640px) {
   .app {

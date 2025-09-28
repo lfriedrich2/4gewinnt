@@ -54,6 +54,7 @@ class ConnectFourPro {
     this.setupEventListeners();
     this.initializeBoard();
     this.updateScoreDisplay();
+    this.updateAnimationState(); // Apply animation settings
     this.newGame();
     
     // Add keyboard support
@@ -115,16 +116,16 @@ class ConnectFourPro {
           cell.classList.add('p1');
           cell.setAttribute('aria-label', `${cell.getAttribute('aria-label')}, Spieler 1`);
           
-          // Only animate if this is the last moved piece
-          if (this.lastMove && this.lastMove.row === r && this.lastMove.col === c) {
+          // Only animate if animations are enabled and this is the last moved piece
+          if (this.settings.animations && this.lastMove && this.lastMove.row === r && this.lastMove.col === c) {
             cell.classList.add('drop-animation');
           }
         } else if (cellValue === 2) {
           cell.classList.add('p2');
           cell.setAttribute('aria-label', `${cell.getAttribute('aria-label')}, Spieler 2`);
           
-          // Only animate if this is the last moved piece
-          if (this.lastMove && this.lastMove.row === r && this.lastMove.col === c) {
+          // Only animate if animations are enabled and this is the last moved piece
+          if (this.settings.animations && this.lastMove && this.lastMove.row === r && this.lastMove.col === c) {
             cell.classList.add('drop-animation');
           }
         }
@@ -150,7 +151,14 @@ class ConnectFourPro {
     const cells = this.boardEl.querySelectorAll(`[data-col="${col}"]`);
     cells.forEach(cell => {
       if (!cell.classList.contains('p1') && !cell.classList.contains('p2')) {
-        cell.style.background = highlight ? 'var(--surface-hover)' : '';
+        // Only apply hover effects if animations are enabled
+        if (this.settings.animations) {
+          cell.style.background = highlight ? 'var(--surface-hover)' : '';
+          cell.style.transform = highlight ? 'scale(1.05)' : '';
+        } else {
+          cell.style.background = highlight ? 'var(--surface-hover)' : '';
+          // No transform when animations are disabled
+        }
       }
     });
   }
@@ -412,6 +420,9 @@ class ConnectFourPro {
     this.updateScoreDisplay();
     this.updateStatus();
     this.hideSettings();
+    
+    // Update animation state
+    this.updateAnimationState();
   }
   
   loadSettings() {
@@ -428,6 +439,16 @@ class ConnectFourPro {
       }
     } catch (error) {
       console.warn('Could not load settings:', error);
+    }
+  }
+  
+  // Animation Control - Add/remove CSS class to control animations
+  updateAnimationState() {
+    const body = document.body;
+    if (this.settings.animations) {
+      body.classList.remove('no-animations');
+    } else {
+      body.classList.add('no-animations');
     }
   }
   
