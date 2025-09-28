@@ -89,6 +89,7 @@ class ConnectFourPro {
   
   initializeBoard() {
     this.board = Array.from({ length: this.ROWS }, () => Array(this.COLS).fill(0));
+    this.lastMove = null; // Track the last move for animation
     this.renderBoard();
   }
   
@@ -113,9 +114,19 @@ class ConnectFourPro {
         if (cellValue === 1) {
           cell.classList.add('p1');
           cell.setAttribute('aria-label', `${cell.getAttribute('aria-label')}, Spieler 1`);
+          
+          // Only animate if this is the last moved piece
+          if (this.lastMove && this.lastMove.row === r && this.lastMove.col === c) {
+            cell.classList.add('drop-animation');
+          }
         } else if (cellValue === 2) {
           cell.classList.add('p2');
           cell.setAttribute('aria-label', `${cell.getAttribute('aria-label')}, Spieler 2`);
+          
+          // Only animate if this is the last moved piece
+          if (this.lastMove && this.lastMove.row === r && this.lastMove.col === c) {
+            cell.classList.add('drop-animation');
+          }
         }
         
         // Add winning cell highlighting
@@ -156,6 +167,9 @@ class ConnectFourPro {
     // Make the move
     this.board[row][col] = this.currentPlayer;
     this.moveHistory.push({ row, col, player: this.currentPlayer });
+    
+    // Store the last move for animation
+    this.lastMove = { row, col, player: this.currentPlayer };
     
     // Play sound effect
     this.playSound('drop');
@@ -317,6 +331,7 @@ class ConnectFourPro {
     this.gameStarted = false;
     this.winningCells = [];
     this.moveHistory = [];
+    this.lastMove = null; // Reset last move for new game
     
     this.hideGameOverOverlay();
     this.updateStatus();
