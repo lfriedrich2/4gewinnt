@@ -1,13 +1,116 @@
 {
-  "name": "Vier Gewinnt",
-  "short_name": "Connect4",
-  "description": "Ein schnelles, hübsches Vier Gewinnt für zwei Spieler – offline spielbar.",
-  "start_url": "/connect4/",
-  "scope": "/connect4/",
+  "name": "Connect Four Pro - Professional Edition",
+  "short_name": "Connect4 Pro",
+  "description": "Das ultimative Vier Gewinnt Erlebnis mit professionellem Design, erweiterten Features und modernen Animationen. Spielen Sie das klassische Strategiespiel in weltweiter Qualität.",
+  "start_url": "/4gewinnt/",
+  "scope": "/4gewinnt/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0f172a",
+  "orientation": "any",
+  "background_color": "#0f0f23",
+  "theme_color": "#667eea",
+  "categories": ["games", "entertainment", "puzzle"],
+  "lang": "de",
+  "dir": "ltr",
   "icons": [
-    { "src": "/connect4/apple-touch-icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any maskable" }
-  ]
+    {
+      "src": "/4gewinnt/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/4gewinnt/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/4gewinnt/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/4gewinnt/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/4gewinnt/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/4gewinnt/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/4gewinnt/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/4gewinnt/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/4gewinnt/apple-touch-icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/4gewinnt/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Connect Four Pro Desktop Version"
+    },
+    {
+      "src": "/4gewinnt/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Connect Four Pro Mobile Version"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Neues Spiel starten",
+      "short_name": "Neues Spiel",
+      "description": "Starten Sie sofort ein neues Connect Four Spiel",
+      "url": "/4gewinnt/?action=new-game",
+      "icons": [
+        {
+          "src": "/4gewinnt/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Einstellungen",
+      "short_name": "Settings",
+      "description": "Spieleinstellungen und Personalisierung",
+      "url": "/4gewinnt/?action=settings",
+      "icons": [
+        {
+          "src": "/4gewinnt/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
 }
